@@ -1,0 +1,22 @@
+var unirest = require("unirest");
+
+var req = unirest("GET", "https://simple-calculator.p.rapidapi.com/send");
+
+req.query({
+	"operation": "add",
+	"num2": "<REQUIRED>",
+	"num1": "<REQUIRED>"
+});
+
+req.headers({
+	"x-rapidapi-key": "4086caedd2msh2c39888c3950f7ep1f83efjsn093292afe7b4",
+	"x-rapidapi-host": "simple-calculator.p.rapidapi.com",
+	"useQueryString": true
+});
+
+
+req.end(function (res) {
+	if (res.error) throw new Error(res.error);
+
+	console.log(res.body);
+});
